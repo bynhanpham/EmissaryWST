@@ -7,6 +7,7 @@ npm-debug.log
 .env
 .idea
 .DS_Store
+.sass-cache
 server/log
 newrelic_agent.log
 coverage/
