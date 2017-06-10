@@ -6,6 +6,8 @@ var options = {
     subtypes: {
         text: ['datetime-local']
     },
+    prepend: '<h1 id="control-7092891">Check In</h1><div class="fb-text form-group field-text-1496299533016"><label for="text-1496299533016" class="fb-text-label">First Name<span class="fb-required">*</span></label><input type="text" class="form-control" name="text-1496299533016" id="text-1496299533016" required="required" aria-required="true"></div><div class="fb-text form-group field-text-1496299552960"><label for="text-1496299552960" class="fb-text-label">Last Name<span class="fb-required">*</span></label><input type="text" class="form-control" name="text-1496299552960" id="text-1496299552960" required="required" aria-required="true"></div><div class="fb-text form-group field-text-1496299568961"><label for="text-1496299568961" class="fb-text-label">Phone Number<span class="fb-required">*</span></label><input type="tel" class="form-control" name="text-1496299568961" id="text-1496299568961" required="required" aria-required="true"></div>',
+    append: '<button type="submit" class="btn btn-primary" style="primary">Submit</button>',
     onSave: function (e, formData) {
         var formJSON = formatFormData(formData);
         var url = '/api/form/template';
@@ -16,46 +18,7 @@ var options = {
     },
     sortableControls: true,
     disableInjectedStyle: false,
-    disableFields: ['autocomplete'],
-    defaultFields: [
-        {
-            "type": "header",
-            "subtype": "h1",
-            "label": "Check In"
-        },
-        {
-            "type": "text",
-            "required": true,
-            "label": "First Name",
-            "className": "form-control",
-            "name": "text-1496299533016",
-            "subtype": "text"
-        },
-        {
-            "type": "text",
-            "required": true,
-            "label": "Last Name",
-            "className": "form-control",
-            "name": "text-1496299552960",
-            "subtype": "text"
-        },
-        {
-            "type": "text",
-            "subtype": "tel",
-            "required": true,
-            "label": "Phone Number",
-            "className": "form-control",
-            "name": "text-1496299568961"
-        },
-        {
-            "type": "button",
-            "subtype": "submit",
-            "label": "Submit",
-            "className": "btn btn-primary",
-            "name": "button-1496299626278",
-            "style": "primary"
-        }
-    ]
+    disableFields: ['autocomplete']
 };
 
 function formatFormData(formData) {

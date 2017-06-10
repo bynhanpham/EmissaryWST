@@ -1,59 +1,7 @@
-/*
-input[type="text"],
-input[type="password"],
-textarea,
-textarea.form-control {
-   height: 30px;
-   margin: 0;
-   padding: 0 10px;
-   vertical-align: middle;
-   background: #f8f8f8;
-   border: 3px solid #ddd;
-   font-family: 'Roboto', sans-serif;
-   font-size: 12px;
-   font-weight: 300;
-   line-height: 30px;
-   color: #888;
-   -moz-border-radius: 4px; -webkit-border-radius: 4px; border-radius: 4px;
-   -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
-   -o-transition: all .3s; -moz-transition: all .3s; -webkit-transition: all .3s; -ms-transition: all .3s; transition: all .3s;
-}
-
-
-textarea,
-textarea.form-control {
-   padding-top: 5px;
-   padding-bottom: 5px;
-   line-height: 30px;
-}
-
-input[type="text"]:focus,
-input[type="password"]:focus,
-textarea:focus,
-textarea.form-control:focus {
-   outline: 0;
-   background: #fff;
-   border: 3px solid #ccc;
-   -moz-box-shadow: none; -webkit-box-shadow: none; box-shadow: none;
-}
-
-input[type="text"]:-moz-placeholder, input[type="password"]:-moz-placeholder,
-textarea:-moz-placeholder, textarea.form-control:-moz-placeholder { color: #888; }
-
-input[type="text"]:-ms-input-placeholder, input[type="password"]:-ms-input-placeholder,
-textarea:-ms-input-placeholder, textarea.form-control:-ms-input-placeholder { color: #888; }
-
-input[type="text"]::-webkit-input-placeholder, input[type="password"]::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder, textarea.form-control::-webkit-input-placeholder { color: #888; }
-
-*/
 .inner-bg{
    padding: 0px !important;
 }
 
-#signup-up-body{
-   overflow: hidden;
-}
 .form-box{
    width: 50%;
    max-width: 425px;
@@ -100,6 +48,3 @@ button.btn:active:focus, button.btn.active:focus { outline: 0; opacity: 0.6; bac
 .login-page .login-content{
    padding-top: 50px !important;
 }
-
-
-

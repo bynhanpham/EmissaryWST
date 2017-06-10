@@ -2,7 +2,7 @@
  * @file Manages checkins.
  */
 
-$(document).ready(function(){
+$(document).ready(function () {
 
     var socket = io();
 
@@ -14,17 +14,57 @@ $(document).ready(function(){
     socket.emit(VALIDATE_COMPANY_ID, companyData);
 
     var formData = loadSavedForm(myCompanyId);
-    if(formData !== null) {
-        var formOptions = {
-            formData: formData,
-            dataType: 'json'
-        };
+    var requiredFields = [{
+        "type": "header",
+        "subtype": "h1",
+        "label": "Check In"
+    }, {
+        "type": "text",
+        "required": true,
+        "label": "First Name",
+        "className": "form-control",
+        "name": "first_name",
+        "subtype": "text"
+    }, {
+        "type": "text",
+        "required": true,
+        "label": "Last Name",
+        "className": "form-control",
+        "name": "last_name",
+        "subtype": "text"
+    }, {
+        "type": "text",
+        "subtype": "tel",
+        "required": true,
+        "label": "Phone Number",
+        "className": "form-control",
+        "name": "tel"
+    }];
 
-        $('#check-in').formRender(formOptions);
+    var submitButton = [{
+        "type": "button",
+        "subtype": "submit",
+        "label": "Submit",
+        "className": "btn btn-primary",
+        "name": "submitForm",
+        "style": "primary"
+    }];
+
+    if (formData !== null) {
+        requiredFields = requiredFields.concat(JSON.parse(formData));
     }
 
+    requiredFields = requiredFields.concat(submitButton);
+
+    const formOptions = {
+        formData: requiredFields,
+        dataType: 'json'
+    };
+
+    $('#check-in').formRender(formOptions);
+
     // Prevent users from scrolling around on iPad
-    document.ontouchmove = function(e) {
+    document.ontouchmove = function (e) {
         e.preventDefault();
     };
 
@@ -36,10 +76,10 @@ $(document).ready(function(){
      * @function startCheckIn
      * @desc Starts the check in process
      */
-    function startCheckIn(){
+    function startCheckIn() {
         $('.check-in').addClass('show');
         $('.check-in').animate({
-            top:'10%',
+            top: '10%',
             opacity: '1'
         }, 700);
         $(this).addClass('hide');
@@ -50,35 +90,33 @@ $(document).ready(function(){
      * @function submitForm
      * @desc When a client submits their form
      */
-    function submitForm(){
+    function submitForm() {
         let data = grabFormElements();
         // TODO: make slack integration configurable
         //if(localStorage.getItem("slackToken")&&localStorage.getItem("slackChannel"))
         //{
         let slackMessage = data.first_name + ' ' + data.last_name + ' has just checked in.';
-        $.post("https://slack.com/api/chat.postMessage",
-            {
-                'token': "xoxp-167311421539-169267386423-191140632117-5263dba19bf30c7b56274a69fade6545",
-                'channel': "emissary_slack_test",
-                'text': slackMessage
-            },
-            function(data, status){
-            });
+        $.post("https://slack.com/api/chat.postMessage", {
+            'token': "xoxp-167311421539-169267386423-191140632117-5263dba19bf30c7b56274a69fade6545",
+            'channel': "emissary_slack_test",
+            'text': slackMessage
+        }, function (data, status) {
+        });
         //}
 
         socket.emit(ADD_VISITOR, data);
 
         $(this).animate({
-            top:'35%',
-            opacity:'0'
-        },0);
+            top: '35%',
+            opacity: '0'
+        }, 0);
     }
 
     /**
      * @function grabFormElements
      * @desc Grabs elements from the check in and puts it into an object
      */
-    function grabFormElements(){
+    function grabFormElements() {
         let data = $('.check-in').serializeArray();
         let newVisitor = {};
         newVisitor.company_id = companyData._id;
@@ -93,10 +131,10 @@ $(document).ready(function(){
      * @function updateClock
      * @desc gives the current time
      */
-    function updateClock () {
-        var currentTime = new Date ( );
-        var currentHours = currentTime.getHours ( );
-        var currentMinutes = currentTime.getMinutes ( );
+    function updateClock() {
+        var currentTime = new Date();
+        var currentHours = currentTime.getHours();
+        var currentMinutes = currentTime.getMinutes();
 
         // Pad the minutes and seconds with leading zeros, if required
         currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;

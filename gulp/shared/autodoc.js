@@ -1,5 +1,5 @@
 var gulp = require('gulp');
-var jsdoc = require('./../../node_modules/gulp-jsdoc3', {recurse : true});
+var jsdoc = require('gulp-jsdoc3', {recurse : true});
 
 gulp.task('doc', function() {
    gulp.src(['README.md',
