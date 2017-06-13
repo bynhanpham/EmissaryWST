@@ -147,7 +147,7 @@
                 <th st-sort="Time">Check-in Time</th>
               </tr>
             </thead>
-            <tbody id="visitor-list">
+            <tbody id="visitor-list" class="visitor-list">
               <!-- PATIENT QUEUE TEMPLATE GOES HERE -->
               <div class="modal fade" id="myModal" role="dialog">
                 <div class="modal-dialog"></div>
@@ -156,6 +156,7 @@
           </table>
         </div>
       </div>
+
       <!-- HANDLE BAR TEMPLATES -->
       <script type="text/x-handlebars-template" id="visitor-list-template">
         {{#each []}}
@@ -168,6 +169,7 @@
         </tr>
         {{/each}}
       </script>
+
       <script type="text/x-handlebars-template" id="visitor-info-template">
         <div class="modal-content">
           <div class="modal-header">

@@ -1,11 +1,9 @@
-'use strict';
-
 //monggose set up
-var mongoose = require('mongoose');
-var Schema =  mongoose.Schema;
+let mongoose = require('mongoose');
+let Schema =  mongoose.Schema;
 
 //Schema for user theme settings
-var ThemeSchema   = new Schema({
+let ThemeSchema   = new Schema({
     user_id: String,
     form_color: String,
     background_img: String,

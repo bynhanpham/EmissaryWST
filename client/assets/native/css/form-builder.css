@@ -1,63 +1,47 @@
-#optional_label.form-control{
-	max-width: 70%;
+.form-control {
+  display : inline;
 }
 
-.form-control{
-	display: inline;
+hr {
+  border-top : 3px solid #01b2bd !important;
 }
 
-#box1, #box2{
-	/*width: 80%;*/
-	border: none;
-	padding: 6px;
-	color: black;
-	display: inline-block;
+.form-builder {
+  margin    : 25px auto;
+  max-width : 980px;
+  width     : 90%;
 }
 
-.remove-box{
-	margin-left: 20px;
+.form-group {
+  margin-left  : auto;
+  margin-right : auto;
+  max-width    : 400px;
+  width        : 50%;
 }
 
-hr{
-	border-top: 3px solid #01b2bd !important;
+.my-form input {
+  width : 60%;
 }
 
-.form-builder{
-	width: 90%;
-	max-width: 980px;
-	margin: 25px auto;
-}
-.form-group{
-	width: 50%;
-	max-width: 400px;
-	margin-left: auto;
-	margin-right: auto;
+.add-form-text {
+  margin    : 25px auto;
+  max-width : 400px;
+  width     : 50%;
 }
 
-
-.my-form input{
-	width: 60%;
-}
-.add-form-text{
-	width: 50%;
-	max-width: 400px;
-	margin: 25px auto;
-
+.add-fields {
+  margin-left  : auto;
+  margin-right : auto;
+  max-width    : 400px;
+  width        : 50%;
 }
 
-.add-fields{
-	width: 50%;
-	max-width: 400px;
-	margin-left: auto;
-	margin-right: auto;
+.save-form {
+  margin-top : 25px;
 }
 
-.save-form{
-	margin-top: 25px;
-}
-
-h1{
-	margin-top: 40px;
-	margin-bottom: 15px;
-	text-align: center;
+h1 {
+  margin-bottom : 15px;
+  margin-top    : 40px;
+  text-align    : center;
 }

@@ -1,6 +1,9 @@
 {
     "maxerr"        : 50,       // {int} Maximum error before stopping
 
+    // Enable linting for ES6
+    "esnext"        : true,
+
     // Environments
     "browser"       : true,     // Web Browser (window, document, etc)
     "browserify"    : false,    // Browserify (node.js code in the browser)

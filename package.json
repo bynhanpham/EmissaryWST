@@ -4,14 +4,14 @@
   "description": "Checking In Made Simple",
   "repository": {
     "type": "git",
-    "url": "https://github.com/thiefjack/WebStormTroopers"
+    "url": "https://github.com/cse112-kissmyapp/EmissaryWST"
   },
-  "author": "Eduardo Aguilar",
+  "author": "cse112-kissmyapp",
   "scripts": {
     "cover": "istanbul cover _mocha \"server/test/*.js\"",
-    "csslint": "csslint",
-    "htmlhint": "htmlhint client/assets/native client/assets/views",
-    "jshint": "jshint",
+    "csslint": "csslint client/assets/css/checkin.css client/assets/css/loader.css client/assets/css/style.css client/assets/native/css || true",
+    "htmlhint": "htmlhint client/assets/native client/assets/views || true",
+    "jshint": "jshint --config .jshintrc --verbose --show-non-errors --extract=auto * || true",
     "postinstall": "bower install && gulp build:prod",
     "pretest": "npm run jshint && npm run htmlhint && npm run csslint",
     "start": "node server/app.js",
@@ -95,13 +95,5 @@
   "engines": {
     "node": ">= 4.0.0",
     "npm": ">= 3.0.0"
-  },
-  "pretest": {
-    "ignore": [
-      "client/assets/css/",
-      "client/assets/images/",
-      "client/assets/js/",
-      "docs/"
-    ]
   }
 }

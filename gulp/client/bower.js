@@ -1,9 +1,9 @@
 var gulp = require('gulp');
-    wiredep = require('wiredep').stream,
-    bower_files = require('main-bower-files'),
-    concat = require('gulp-concat'),
-    uglify = require('gulp-uglify'),
-    minifyCSS = require('gulp-minify-css');
+var wiredep = require('wiredep').stream;
+var bower_files = require('main-bower-files');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
+var minifyCSS = require('gulp-minify-css');
 
 /* This will add our bower dependencies to our index.html
  * so that we don't have to manually do it.

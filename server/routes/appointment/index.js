@@ -1,9 +1,7 @@
-'use strict';
+let express = require('express');
+let controller = require('./appointment.controller');
 
-var express = require('express');
-var controller = require('./appointment.controller');
-
-var router = express.Router();
+let router = express.Router();
 
 router.post('/', 			controller.template.create);
 router.get('/:id', 			controller.template.get);

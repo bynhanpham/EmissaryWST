@@ -6,7 +6,7 @@ var options = {
     subtypes: {
         text: ['datetime-local']
     },
-    prepend: '<h1 id="control-7092891">Check In</h1><div class="fb-text form-group field-text-1496299533016"><label for="text-1496299533016" class="fb-text-label">First Name<span class="fb-required">*</span></label><input type="text" class="form-control" name="text-1496299533016" id="text-1496299533016" required="required" aria-required="true"></div><div class="fb-text form-group field-text-1496299552960"><label for="text-1496299552960" class="fb-text-label">Last Name<span class="fb-required">*</span></label><input type="text" class="form-control" name="text-1496299552960" id="text-1496299552960" required="required" aria-required="true"></div><div class="fb-text form-group field-text-1496299568961"><label for="text-1496299568961" class="fb-text-label">Phone Number<span class="fb-required">*</span></label><input type="tel" class="form-control" name="text-1496299568961" id="text-1496299568961" required="required" aria-required="true"></div>',
+    prepend: '<h1 id="control-7092891">Check In</h1><div class="fb-text form-group first_name"><label for="first_name" class="fb-text-label">First Name<span class="fb-required">*</span></label><input type="text" class="form-control" name="first_name" id="first_name" required="required" aria-required="true"></div><div class="fb-text form-group last_name"><label for="last_name" class="fb-text-label">Last Name<span class="fb-required">*</span></label><input type="text" class="form-control" name="last_name" id="last_name" required="required" aria-required="true"></div><div class="fb-text form-group phone_number"><label for="phone_number" class="fb-text-label">Phone Number<span class="fb-required">*</span></label><input type="tel" class="form-control" name="phone_number" id="phone_number" required="required" aria-required="true"></div>',
     append: '<button type="submit" class="btn btn-primary" style="primary">Submit</button>',
     onSave: function (e, formData) {
         var formJSON = formatFormData(formData);
@@ -18,7 +18,51 @@ var options = {
     },
     sortableControls: true,
     disableInjectedStyle: false,
-    disableFields: ['autocomplete']
+    disableFields: ['autocomplete'],
+    fields: [{
+        label: 'Email',
+        required: true,
+        attrs: {
+            type: 'text'
+        },
+        icon: '📧',
+        pattern: "^.*@.*\\..*$",
+        oninvalid: "setCustomValidity('Please enter a valid email!')",
+        oninput: "setCustomValidity('')",
+        className: "form-control, form-email"
+    }, {
+        label: 'Telephone',
+        required: true,
+        attrs: {
+            type: 'text'
+        },
+        icon: '☎',
+        pattern: "^[\\+]1\\s[\\(]\\d{3}[\\)]\\d{3}[\\-]\\d{4}",
+        oninvalid: "setCustomValidity('Please follow the correct format (xxx)xxx-xxxx.')",
+        oninput: "setCustomValidity('')",
+        className: "form-phone form-control bfh-phone",
+        'data-format': '+1 (ddd)ddd-dddd'
+    }],
+    typeUserAttrs: {
+        text: {
+            pattern: {
+                label: ' ',
+                type: 'hidden'
+            },
+            oninvalid: {
+                label: ' ',
+                type: 'hidden'
+            },
+            oninput: {
+                label: ' ',
+                type: 'hidden'
+            },
+            'data-format': {
+                label: ' ',
+                type: 'hidden'
+            }
+        }
+    }
 };
 
 function formatFormData(formData) {

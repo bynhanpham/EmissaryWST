@@ -1,45 +1,41 @@
 /**
  * Created by kevingu on 2/21/16.
  */
-var request = require('supertest');
-var should = require('chai').should();
-var config = require('../config/config');
-var Appointment = require('../models/Appointment');
-var Company = require('../models/Company');
+let request = require('supertest');
+let should = require('chai').should();
+let config = require('../config/config');
+let Appointment = require('../models/Appointment');
+let Company = require('../models/Company');
 
 describe('Appointment Test', function() {
-    var url = "localhost:" + config.port;
-    var token;
-    var currAppointment;
-    var currCompany;
+    let url = "localhost:" + config.port;
+    let currAppointment;
+    let currCompany;
 
     // old appointment info
-    var first_name = "test";
-    var last_name = "test";
-    var phone_number="1234567890";
-    var date="2016-04-23T18:25:43.511Z";
-    var provider_name = "test test";
+    let first_name = "test";
+    let last_name = "test";
+    let phone_number="1234567890";
+    let date="2016-04-23T18:25:43.511Z";
+    let provider_name = "test test";
 
     //new appointment info
-    var new_first_name = "test1";
-    var new_last_name = "test1";
-    var new_phone_number="1231267890";
-    var new_date="2016-03-23T18:25:43.511Z";
-    var new_provider_name = "test1 test1";
+    let new_first_name = "test1";
+    let new_last_name = "test1";
+    let new_phone_number="1231267890";
+    let new_date="2016-03-23T18:25:43.511Z";
+    let new_provider_name = "test1 test1";
 
     //company info
-    var email = "new@test.edu";
-    var credit_card_number="1231231241251";
-    var name = "test";
-    var expiration_date="6/17";
-
-    var userID = null;
-
+    let email = "new@test.edu";
+    let credit_card_number="1231231241251";
+    let name = "test";
+    let expiration_date="6/17";
 
     before(function(done) {
 
         //setup company
-        var company = new Company();
+        let company = new Company();
         company.email = email;
         company.credit_card_number = credit_card_number;
         company.name = name;

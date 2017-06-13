@@ -2,7 +2,6 @@
 $(function() {
    $('#loginButton').click(function () {
        var userData = grabUserData();
-       //alert(userData);
        event.preventDefault();
        ajaxPostUser('/api/employees/login', userData);
        
@@ -35,7 +34,7 @@ function ajaxPostUser(url, data){
            console.log(response);
            if(response.role === 'a_admin'){
              localStorage.setItem('userState' , 2);
-             location.href = '/admin-dashboard.html'
+             location.href = '/admin-dashboard.html';
            }
            else{
              localStorage.setItem('userState' , 1);
@@ -48,7 +47,7 @@ function ajaxPostUser(url, data){
 
            window.onerror=handleError();
            event.preventDefault();
-           //location.href = '/login.html';
+           alert("Username and Password Combination Incorrect. Please Try Again.");
         }
    });
 }

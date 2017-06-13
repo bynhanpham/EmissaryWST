@@ -1,14 +1,12 @@
-'use strict';
-
 /* Require mongoose to interact with mongoDB */
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
-var bcrypt = require('bcrypt-nodejs');
+let mongoose = require('mongoose');
+let Schema = mongoose.Schema;
+let bcrypt = require('bcrypt-nodejs');
 
 /*
  * Employee schema
  */
-var employeeSchema = mongoose.Schema({
+let employeeSchema = mongoose.Schema({
   first_name: {type: String, required: true},
   last_name: {type: String, required: true},
   email: {type: String, unique: true, index: true, required: true},

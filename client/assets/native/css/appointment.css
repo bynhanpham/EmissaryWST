@@ -1,60 +1,62 @@
 .company-name {
-    font-size: 18px;
+  font-size : 18px;
 }
 
-hr{
-   border-top: 3px solid #01b2bd
-}
-.delete-appt{
-   margin-left: 15px;
-}
-.delete-appt:hover{
-	color: red;
-	cursor:pointer;
-}
-.appt-container{
-	max-width: 980px;
+hr {
+  border-top : 3px solid #01b2bd;
 }
 
-.page-title{
-   margin: 35px auto;
-
+.delete-appt {
+  margin-left : 15px;
 }
 
-.add-button{
-   background-color: #01b2bd;
-   border-radius: 2px;
-   color: white;
-   float: left;
-   margin-top: 15px;
-   padding: 7px;
+.delete-appt:hover {
+  color  : red;
+  cursor : pointer;
 }
 
-.add-button:hover{
-   background-color: #049099;
-   cursor: pointer;
+.appt-container {
+  max-width : 980px;
 }
 
-tr:nth-last-child(1){
-   border-bottom: 1px solid rgb(215,215,215);
+.page-title {
+  margin : 35px auto;
 }
 
-.table thead th{
-    border-bottom: 1px solid rgb(215,215,215);
+.add-button {
+  background-color : #01b2bd;
+  border-radius    : 2px;
+  color            : white;
+  float            : left;
+  margin-top       : 15px;
+  padding          : 7px;
 }
 
-.message-api{
-   color: #303641;
-   margin-left: 30px;
-   margin-top: 30px;
-   max-width: 480px;
-   width: 60%;
+.add-button:hover {
+  background-color : #049099;
+  cursor           : pointer;
 }
 
-.message-api a{
-   color: #818da2;
+tr:nth-last-child(1) {
+  border-bottom : 1px solid rgb(215,215,215);
 }
 
-.message-api a:hover{
-   color: #5b677b;
+.table thead th {
+  border-bottom : 1px solid rgb(215,215,215);
+}
+
+.message-api {
+  color       : #303641;
+  margin-left : 30px;
+  margin-top  : 30px;
+  max-width   : 480px;
+  width       : 60%;
+}
+
+.message-api a {
+  color : #818da2;
+}
+
+.message-api a:hover {
+  color : #5b677b;
 }

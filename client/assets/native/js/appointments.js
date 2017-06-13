@@ -144,7 +144,7 @@ $(document).ready(function(){
         mm = '0' + mm;
       }
       //console.log(monthArray[mm]);
-      return  mm + '/' + dd + '/' +  + yyyy;
+      return  mm + '/' + dd + '/' + yyyy;
     }
     function formatNumber(number){
       return '(' + number.substr(0,3) + ')' + number.substr(3,3) + '-' + number.substr(6,4);
@@ -152,9 +152,9 @@ $(document).ready(function(){
 
     //FUNCTION TO FORMAT DATE OBJECT IN JS
     function jsDate(date,time){
-      var jsDate = reFormatDate(date);
-      var jsTime = reFormatTime(time);
-      jsDateObj = jsDate + ' ' + jsTime;
+      let date2 = reFormatDate(date);
+      let time2 = reFormatTime(time);
+      jsDateObj = date2 + ' ' + time2;
       return jsDateObj;
     }
 

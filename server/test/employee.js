@@ -1,16 +1,13 @@
-var request = require('supertest');
-
-var config = require('../config/config');
-var should = require('chai').should();
-
+let request = require('supertest');
+let config = require('../config/config');
+let should = require('chai').should();
 // Wrapper that creates admin user to allow api calls
-var ConfigureAuth = require('./ConfigureAuth');
+let ConfigureAuth = require('./ConfigureAuth');
 
 
 describe("Employee", function() {
-        var url = "localhost:" + config.port;
-
-        var credentials;  // variable to hold all the need authentication variables.
+        let url = "localhost:" + config.port;
+        let credentials;  // variable to hold all the need authentication variables.
 
         // before function is called at the very beginning of the 'Forms' test suite,
         // no tests are run until the done() callback is called.
@@ -22,9 +19,6 @@ describe("Employee", function() {
                 done();
             });
         });
-
-        var templateFormId = null;
-
 
         describe("Employee Testing", function() {
 
@@ -56,20 +50,20 @@ describe("Employee", function() {
             });
             describe('Login', function(){
                 it('Should login with employee data', function(done){
-                        request(url)
+                    request(url)
                         .post('/api/employees/login')
-                            .send(
-                                {
-                                    email:"jt@tomcruise.com",
-                                    password: "test"
-                                }
-                            )
-                            .end(function(err, res){
-                                if(err) throw (err);
-                                res.body.should.have.property('_id');
-                                res.body.should.not.have.property('password');
-                                done();
-                            });
+                        .send(
+                            {
+                                email:"jt@tomcruise.com",
+                                password: "test"
+                            }
+                        )
+                        .end(function(err, res){
+                            if(err) throw (err);
+                            res.body.should.have.property('_id');
+                            res.body.should.not.have.property('password');
+                            done();
+                        });
                 });
                 it('Should not login with employee data', function(done){
                     request(url)
@@ -157,12 +151,7 @@ describe("Employee", function() {
                             _admin_id: credentials.admin._id
                         })
                         .end(function(err, res){
-
-                            //console.log("RESPONSE", res)
                             res.body.should.be.instanceof(Object);
-                            //res.body.should.not.be.empty;
-                            res.body.should.not.be.empty;
-                            //res.body.should.exist;
                             should.exist(res.body);
                             res.body.should.have.length.of(1);
                             res.body.should.be.an.instanceof(Array);

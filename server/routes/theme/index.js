@@ -1,23 +1,18 @@
-'use strict';
-
 /*
  * This module is meant to house all of the API
  * routes that pertain to theme settings
  */
-var express = require('express');
-var router = express.Router();
-var controller = require('./theme.controller');
+let express = require('express');
+let router = express.Router();
+let controller = require('./theme.controller');
 
 /* need this to enable cross origin resource sharing.If disabled, we might
  * not need this later. This is just to get the example to work
  * when front end is served from a something other than our app server.
  */
-var cors = require('cors');
+let cors = require('cors');
 
-var Theme = require('../../models/Theme');
-
-
-
+let Theme = require('../../models/Theme');
 
 //post with default values
 router.post('/:user_id/theme', controller.template.create);

@@ -1,12 +1,7 @@
-'use strict';
+let express = require('express');
+let controller = require('./form.controller');
 
-var express = require('express');
-var controller = require('./form.controller');
-
-var router = express.Router();
-
-var bodyparser = require('body-parser');
-var urlparser = bodyparser.urlencoded({extended: false});
+let router = express.Router();
 
 router.get('/template/company/:id', controller.template.findByCompanyId);
 router.get('/template/:adminid',controller.template.findByAdminId);

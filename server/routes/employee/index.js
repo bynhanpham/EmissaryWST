@@ -1,9 +1,7 @@
-'use strict';
+let express = require('express');
+let controller = require('./employee.controller');
 
-var express = require('express');
-var controller = require('./employee.controller');
-
-var router = express.Router();
+let router = express.Router();
 
 router.get('/company/:id',  controller.getAllEmployees);
 router.get('/:id',          controller.getById);

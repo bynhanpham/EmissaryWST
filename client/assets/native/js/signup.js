@@ -95,9 +95,14 @@ $(document).ready(function(){
                 }
             },
             error: function(response){
-                //console.log(response);
-                //alert(jQuery.parseJSON(resJSON).responseText);
                 event.preventDefault();
+                
+                if(url === '/api/employees') {
+                    alert("Email Already Associated With Another Account\n Please Use Another Email");
+                }
+                else if (url === '/api/companies') {
+                    alert("Email Already Associated With Another Company\n Please Use Another Email");
+                }
                 location.href = '/signup.html';
             }
         });

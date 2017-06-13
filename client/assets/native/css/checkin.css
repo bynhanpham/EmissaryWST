@@ -1,106 +1,101 @@
 body {
-    font-family: "Helvetica Neue", serif;
+  font-family : "Helvetica Neue",
+                serif;
 }
 
 .clock {
-    color: #f1f1f1;
-    font-size: 1250%;
-    margin-top: 0;
-    padding-top: 150px;
-    text-align: center;
+  color       : #f1f1f1;
+  font-size   : 1250%;
+  margin-top  : 0;
+  padding-top : 150px;
+  text-align  : center;
 }
 
 .container {
-    border-radius: 3px;
+  border-radius : 3px;
 }
 
 .check-in-page {
-    /*background-color: #1C7F79;*/
-    background-image: url("http://www.aporhopi.org/assets/blueb-0c434e2c0a3eeaf33755fc9dacbf994fa3436ba7d65e556f1eafc7ec18f919de.png");
-    background-size: cover;
-    height: 100vh;
+  background-image : url("http://www.aporhopi.org/assets/blueb-0c434e2c0a3eeaf33755fc9dacbf994fa3436ba7d65e556f1eafc7ec18f919de.png");
+  background-size  : cover;
+  height           : 100vh;
 }
 
 .tap-to-check {
-    background-color: #f1f1f1;
-    border-radius: 3px;
-    bottom: 15%;
-    color: #333;
-    display: block;
-    font-family: "Helvetica Neue", serif;
-    font-size: 32px;
-    height: 100px;
-    left: 50%;
-    margin-left: -137.5px;
-    position: absolute;
-    text-align: center;
-    /*background-color: #0cb4a4;*/
-    width: 275px;
-    /*background-color: #0abcb3;*/
-
+  background-color : #f1f1f1;
+  border-radius    : 3px;
+  bottom           : 15%;
+  color            : #333;
+  display          : block;
+  font-family      : "Helvetica Neue",
+                     serif;
+  font-size        : 32px;
+  left             : 50%;
+  margin-left      : -137.5px;
+  position         : absolute;
+  text-align       : center;
+  width            : 275px;
 }
 
 .tap-to-check:hover {
-    cursor: pointer;
+  cursor : pointer;
 }
 
 .check-in {
-
-    background-color: #FFFFFF;
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
-    left: 50%;
-    margin-left: -200px;
-    opacity: 0;
-    padding: 25px;
-    position: absolute;
-    text-align: center;
-    top: 5%;
-    width: 400px;
-
+  background-color : #FFFFFF;
+  box-shadow       : 0 0 20px 0 rgba(0, 0, 0, 0.2),
+                     0 5px 5px 0 rgba(0, 0, 0, 0.24);
+  left             : 50%;
+  margin-left      : -200px;
+  opacity          : 0;
+  padding          : 25px;
+  position         : absolute;
+  text-align       : center;
+  top              : 5%;
+  width            : 400px;
 }
 
 .check-in-header {
-    color: #f1f1f1;
-    font-size: 52px;
-    margin-bottom: 75px;
+  color         : #f1f1f1;
+  font-size     : 52px;
+  margin-bottom : 75px;
 }
 
 .visitor-fields {
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #f1f1f1;
-    color: #f1f1f1;
-    font-size: 28px;
-    margin-bottom: 30px;
-    margin-top: 30px;
-    /*background-color: #303641;*/
-    padding-bottom: 5px;
-    width: 100%;
+  background-color : transparent;
+  border           : none;
+  border-bottom    : 2px solid #f1f1f1;
+  color            : #f1f1f1;
+  font-size        : 28px;
+  margin-bottom    : 30px;
+  margin-top       : 30px;
+  padding-bottom   : 5px;
+  width            : 100%;
 }
 
 .visitor-fields:focus {
-    outline: none;
+  outline : none;
 }
 
 .check-in > input::-webkit-input-placeholder {
-    color: #f1f1f1;
+  color : #f1f1f1;
 }
 
 .submit-check-in {
-    background-color: #f1f1f1;
-    border: none;
-    border-radius: 3px;
-    color: #333;
-    display: block;
-    font-size: 28px;
-    height: 50px;
-    left: 50%;
-    margin-left: -75px;
-    margin-top: 25px;
-    position: absolute;
-    width: 150px;
+  background-color : #f1f1f1;
+  border           : none;
+  border-radius    : 3px;
+  color            : #333;
+  display          : block;
+  font-size        : 28px;
+  height           : 50px;
+  left             : 50%;
+  margin-left      : -75px;
+  margin-top       : 25px;
+  position         : absolute;
+  width            : 150px;
 }
 
 .hide {
-    display: none
+  display : none;
 }

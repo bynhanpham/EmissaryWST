@@ -2,10 +2,8 @@
  * Main application routes
  */
 
-'use strict';
-
 module.exports = function(app) {
-    var r = require;
+    let r = require;
     app.use(r('./routes/home'));
     app.use('/api/form'         , r('./routes/form'));
     app.use('/api'              , r('./routes/theme'));

@@ -1,7 +1,7 @@
-var  nodemon = require('gulp-nodemon'),
+let  nodemon = require('gulp-nodemon'),
      shell = require('gulp-shell');
 
-var gulp = require('gulp');
+let gulp = require('gulp');
 
 
 /* Serve the server. gulp-nodemon is used for automatic
@@ -24,5 +24,5 @@ gulp.task('serve:backend', function() {
  */
 gulp.task('backend', function() {
   return gulp.src('')
-    .pipe(shell('nf run gulp serve:backend'))
+    .pipe(shell('nf run gulp serve:backend'));
 });

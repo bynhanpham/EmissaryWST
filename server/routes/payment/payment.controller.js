@@ -1,15 +1,12 @@
-'use strict';
+let BASIC_PLAN_ID = 'emissary_basic';
 
-var exports = module.exports;
-var BASIC_PLAN_ID = 'emissary_basic';
+let Company = require('../../models/Company');
 
-var Company = require('../../models/Company');
-
-var stripe = require("stripe")(
+let stripe = require("stripe")(
   "sk_test_dqzYJJ6xWGgg6U1hgQr3hNye"
 ); // TODO: do i need to do this for every js file that uses stripe?
 
-exports.createSubscription = function(req, res){
+module.exports.createSubscription = function(req, res){
 	// create customer, TODO: could there be an existing stripe customer ID?
 	stripe.customers.create({ // calls stripe customer create
 		description: 'Customer for '+req.body.stripeEmail,
@@ -25,16 +22,16 @@ exports.createSubscription = function(req, res){
 	});
 };
 
-exports.getSubscription = function(req, res){
+module.exports.getSubscription = function(req, res){
 	Company.findOne({_id: req.params.id}, function (err, result){
-		var stripeCustomerID = result.stripeCustomerID;
+		let stripeCustomerID = result.stripeCustomerID;
 		if(err) {
             return res.status(400).json({error: "Could not find subscription."});
 		}
 		stripe.customers.listSubscriptions(stripeCustomerID,
 			function(err, subscriptions){
-				var subList = subscriptions.data;
-				var index = basicPlanIndex(subList);
+				let subList = subscriptions.data;
+				let index = basicPlanIndex(subList);
 				if (err || index === -1){
 					return res.status(400).json({error: "Could not find subscription."});
 				}
@@ -47,8 +44,8 @@ exports.getSubscription = function(req, res){
 };
 
 function basicPlanIndex(arr){
-	var arrLength = arr.length;
-	for(var i = 0; i < arrLength; i++){
+	let arrLength = arr.length;
+	for(let i = 0; i < arrLength; i++){
 		if (arr[i].plan.id === BASIC_PLAN_ID){
 			return i;
 		}

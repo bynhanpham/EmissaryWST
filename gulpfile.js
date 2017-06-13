@@ -1,3 +1,2 @@
-var dir = require('require-dir');
-
+let dir = require('require-dir');
 dir('./gulp/', { recurse: true });
