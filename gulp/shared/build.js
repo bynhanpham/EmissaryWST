@@ -28,9 +28,9 @@ gulp.task('minify:css', ['concat:css'], function() {
 
 /* Minify bundle.js */
 gulp.task('minify:js', ['ng-annotate'], function() {
-  return gulp.src('./dist/bundle.js')
+  return gulp.src('./dist/assets/js/bundle.js')
     .pipe(uglify())
-    .pipe(gulp.dest('./dist/'))
+    .pipe(gulp.dest('./dist/assets/js'))
 });
 
 /* Build the app without minification */
