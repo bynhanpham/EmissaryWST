@@ -21,20 +21,20 @@ gulp.task('ng-annotate', ['concat:js'], function () {
  * it first using concat:css
  */
 gulp.task('minify:css', ['concat:css'], function() {
-  return gulp.src('./dist/bundle.css')
+  return gulp.src('./dist/assets/css/bundleAppointments.css')
     .pipe(minifyCSS())
-    .pipe(gulp.dest('./dist/'));
+    .pipe(gulp.dest('./dist/assets/css'));
 });
 
 /* Minify bundle.js */
 gulp.task('minify:js', ['ng-annotate'], function() {
-  return gulp.src('./dist/bundle.js')
+  return gulp.src('./dist/assets/js/bundle.js')
     .pipe(uglify())
-    .pipe(gulp.dest('./dist/'));
+    .pipe(gulp.dest('./dist/assets/js'));
 });
 
 /* Build the app without minification */
-gulp.task('build:dev', ['dist', 'doc']);
+gulp.task('build:dev', ['dist', 'doc', 'minify:js']);
 
 /* Build the app and minfy */
-gulp.task('build:prod', ['dist', 'minify:js', /*'minify:css', */'htmlify']);
+gulp.task('build:prod', ['dist', 'minify:js', /*'minify:css',*/ 'htmlify']);
