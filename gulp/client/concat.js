@@ -52,8 +52,23 @@ gulp.task('concat:js', function() {
  * in dist/assets folder
  */
 gulp.task('concat:css', function() {
-  return gulp.src(['./client/assets/*.css', '!./client/assets/css/neon.css', '!./client/assets/css/bootstrap.css'])
+  return gulp.src([
+    './client/assets/css/bootstrap.min.css', 
+    './client/assets/css/neon.css'
+    ])
     .pipe(concat('bundle.css'))
-    .pipe(gulp.dest('./dist/'));
+    .pipe(gulp.dest('./dist/assets/css'));
+});
+
+gulp.task('concat:cssAppointment', function() {
+  return gulp.src([
+    './client/assets/css/bootstrap.css', 
+    './client/assets/css/neon-core.css',
+    './client/assets/css/neon-theme.css',
+    //'./client/assets/css/neon-forms.css',
+    './client/assets/native/css/shared-dashboard.css'
+    ])
+    .pipe(concat('bundleAppointments.css'))
+    .pipe(gulp.dest('./dist/assets/css'));
 });
 
