@@ -2,11 +2,14 @@ let express = require('express');
 let server;
 let io = require('socket.io')();
 
+// Not sure where this comes from
+/* global callback */
+
 //Constants for listening to Sockets
 let CONNECTION = "connection";
 let VALIDATE_COMPANY_ID = "validate_company_id";
 let VISITOR_LIST_UPDATE = "visitor_list_update";
-let DISCONNECT = "disconnect";
+//let DISCONNECT = "disconnect";
 let REMOVE_VISITOR = "remove_visitor";
 let ADD_VISITOR = "add_visitor";
 let NOTIFY_ERROR = "notify_error";
@@ -63,13 +66,16 @@ module.exports.createServer = function(io_in) {
             });
         });
 
+        /*
         socket.on(DISCONNECT, function(data) {
             console.log('User disconnected from ' + data.company_id);
         });
+        */
 
         // requires the company_id and visitor_id to be sent
         socket.on(REMOVE_VISITOR, function(data) {
-            console.log(data.company_id);
+            console.log("REMOVING VISITOR");
+            console.log(data);
             let company_id = data.company_id;
             let visitor_id = data.visitor_id;
             if(!company_id ||  !visitor_id) return;

@@ -1,6 +1,7 @@
 /**
  * Created by kevingu on 2/26/16.
  */
+
 let io = require('socket.io-client');
 let config = require('../config/config');
 let Company = require('../models/Company');
@@ -20,6 +21,7 @@ let VISITOR_LIST_UPDATE = "visitor_list_update";
 let REMOVE_VISITOR = "remove_visitor";
 let ADD_VISITOR = "add_visitor";
 
+var updateList;
 
 describe("Visitor List Socket",function(){
 
@@ -205,7 +207,7 @@ describe("Visitor List Socket",function(){
     it('remove visitor from list', function(done) {
         client1.emit(REMOVE_VISITOR, {company_id: currCompany._id,
             visitor_id: visitor1._id});
-        client1.on(VISITOR_LIST_UPDATE, updateList=function(data) {
+        client1.on(VISITOR_LIST_UPDATE, updateList = function(data) {
             data.should.have.property("_id");
             data.should.have.property('visitors');
             data.should.have.property('company_id');
@@ -219,13 +221,13 @@ describe("Visitor List Socket",function(){
     });
 
     after(function(done) {
-        Appointment.remove({_id:appointment1._id}, function(err, _){
+        Appointment.remove({_id:appointment1._id}, function(err){
             if(err) throw(err);
-            Appointment.remove({_id:appointment2._id}, function(err, _){
+            Appointment.remove({_id:appointment2._id}, function(err){
                 if(err) throw(err);
-                Company.remove({_id:currCompany._id}, function(err, _){
+                Company.remove({_id:currCompany._id}, function(err){
                     if(err) throw(err);
-                    VisitorList.remove({_id: currVisitorList._id}, function(err, _){
+                    VisitorList.remove({_id: currVisitorList._id}, function(err){
                         if(err) throw(err);
                         client1.disconnect();
                         done();

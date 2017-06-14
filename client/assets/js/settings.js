@@ -1,3 +1,6 @@
+// Declare JQuery global
+/* global $ */
+
 window.onload = function() {
     function GetURLParameter(sParam)
     {
@@ -33,6 +36,5 @@ window.onload = function() {
                 localStorage.setItem("slackToken", data.access_token);
                 localStorage.setItem("slackChannel", channel);
             });
-
     }
 };

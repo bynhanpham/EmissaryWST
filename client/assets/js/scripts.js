@@ -1,21 +1,22 @@
+// Declare JQuery global
+/* global $ */
 
-jQuery(document).ready(function() {
-	
-    /*
-        Fullscreen background
-    */
+$(document).ready(function() {
+    /**
+     * Fullscreen background
+     */
     $.backstretch("assets/images/backgrounds/1.jpg");
 
-    $('#top-navbar-1').on('shown.bs.collapse', function(){
-    	$.backstretch("resize");
+    let topNavbar1 = $('#top-navbar-1');
+    topNavbar1.on('shown.bs.collapse', function(){
+        $.backstretch("resize");
     });
-    $('#top-navbar-1').on('hidden.bs.collapse', function(){
-    	$.backstretch("resize");
+    topNavbar1.on('hidden.bs.collapse', function(){
+        $.backstretch("resize");
     });
 
-    /*
-        Form
-    */
+    /**
+     * Form
+     */
     $('#company-reg-form').find('fieldset:first-child').fadeIn('slow');
-
 });

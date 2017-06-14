@@ -88,7 +88,6 @@ describe("VisitorList", function() {
                 appointment1.company_id = c._id;
                 appointment1.provider_name = first_appointment_info.provider_name;
                 appointment1.save(function(err, a1){
-                    console.log(err);
                     if(err) throw(err);
                     appointment1=a1;
                     appointment2 = new Appointment();
@@ -176,6 +175,7 @@ describe("VisitorList", function() {
                 .send()
                 .expect(200)
                 .end(function(err, res){
+                    if (err) console.log(err);
                     should.exist(res.body.visitors);
                     res.body.visitors.should.be.an.instanceof(Array);
                     res.body.visitors.should.have.length.of(2);
@@ -190,6 +190,7 @@ describe("VisitorList", function() {
                 .send()
                 .expect(404)
                 .end(function(err, res){
+                    if (err) console.log(err);
                     console.log(res.body);
                     res.body.should.have.property('error');
                     done();
@@ -200,6 +201,7 @@ describe("VisitorList", function() {
             request(url)
                 .get('/api/visitorLists/company/' + currCompany._id)
                 .end(function(err, res){
+                    if (err) console.log(err);
                     let prevLen = 0;
                     let patientId;
                     res.body.should.have.property('visitors');
@@ -212,6 +214,7 @@ describe("VisitorList", function() {
                         .delete('/api/visitorLists/company/' + currCompany._id + '/visitor/' + visitor1._id)
                         .expect(200)
                         .end(function(err, res){
+                            if (err) console.log(err);
                             should.exist(res.body);
                             res.body.visitors.should.be.an.instanceof(Array);
                             res.body.visitors.should.have.length.of(prevLen - 1);
@@ -226,6 +229,7 @@ describe("VisitorList", function() {
                 .delete('/api/visitorLists/' + currVisitorList._id)
                 .expect(200)
                 .end(function(err, res){
+                    if (err) console.log(err);
                     res.body.should.have.property('visitors');
                     res.body.visitors.should.have.length.of(0);
                     done();
@@ -233,13 +237,13 @@ describe("VisitorList", function() {
         });
 
         after(function(done) {
-            Appointment.remove({_id:appointment1._id}, function(err, _){
+            Appointment.remove({_id:appointment1._id}, function(err){
                 if(err) throw(err);
-                Appointment.remove({_id:appointment2._id}, function(err, _){
+                Appointment.remove({_id:appointment2._id}, function(err){
                     if(err) throw(err);
-                    Company.remove({_id:currCompany._id}, function(err, _){
+                    Company.remove({_id:currCompany._id}, function(err){
                         if(err) throw(err);
-                        VisitorList.remove({_id: currVisitorList._id}, function(err, _){
+                        VisitorList.remove({_id: currVisitorList._id}, function(err){
                             if(err) throw(err);
                             done();
                         });

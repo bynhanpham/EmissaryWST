@@ -23,87 +23,87 @@
   
 </head>
 <body class="page-body gray" data-url="http://neon.dev">
-  <div class="page-container">
-    <!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
-    <div class="sidebar-menu">
-      <div class="sidebar-menu-inner">
-        <header class="logo-env">
-          <!-- logo -->
-          <div class="logo">
-            <a href="visitors.html">
-              <img src="assets/images/emissary.png" width="150" alt=""/>
-            </a>
-          </div>
-          <!-- logo collapse icon -->
-          <div class="sidebar-collapse">
-            <a href="#" class="sidebar-collapse-icon">
-              <!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
-              <i class="entypo-menu"></i>
-            </a>
-          </div>
-          <!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
-          <div class="sidebar-mobile-menu visible-xs">
-            <a href="#" class="with-animation">
-              <!-- add class "with-animation" to support animation -->
-              <i class="entypo-menu"></i>
-            </a>
-          </div>
-        </header>
-        <ul id="main-menu" class="main-menu">
-          <!-- add class "multiple-expanded" to allow multiple submenus to open -->
-          <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-          <li>
-            <a href="/checkin.html">
-              <i class="entypo-play">
-                <span class="title">Start Check-in App</span>
-              </i>
-            </a>
-          </li>
-          <li>
-            <a href="/visitors.html">
-              <i class="entypo-users"></i>
-              <span class="title">Visitors</span>
-            </a>
-          </li>
-          <li>
-            <a href="/employees.html">
-              <i class="entypo-user"></i>
-              <span class="title">Employees</span>
-            </a>
-          </li>
-          <li>
-            <a href="/appointments.html">
-              <i class="entypo-calendar"></i>
-              <span class="title">Appointments</span>
-            </a>
-          </li>
-          <li>
-            <a href="/form-builder.html">
-              <i class="entypo-clipboard"></i>
-              <span class="title">Forms</span>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="entypo-tools"></i>
-              <span class="title">Settings</span>
-            </a>
+<div class="page-container">
+  <!-- add class "sidebar-collapsed" to close sidebar by default, "chat-visible" to make chat appear always -->
+  <div class="sidebar-menu">
+    <div class="sidebar-menu-inner">
+      <header class="logo-env">
+        <!-- logo -->
+        <div class="logo">
+          <a href="visitors.html">
+            <img src="assets/images/emissary.png" width="150" alt=""/>
+          </a>
+        </div>
+        <!-- logo collapse icon -->
+        <div class="sidebar-collapse">
+          <a href="#" class="sidebar-collapse-icon">
+            <!-- add class "with-animation" if you want sidebar to have animation during expanding/collapsing transition -->
+            <i class="entypo-menu"></i>
+          </a>
+        </div>
+        <!-- open/close menu icon (do not remove if you want to enable menu on mobile devices) -->
+        <div class="sidebar-mobile-menu visible-xs">
+          <a href="#" class="with-animation">
+            <!-- add class "with-animation" to support animation -->
+            <i class="entypo-menu"></i>
+          </a>
+        </div>
+      </header>
+      <ul id="main-menu" class="main-menu">
+        <!-- add class "multiple-expanded" to allow multiple submenus to open -->
+        <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
+        <li>
+          <a href="/checkin.html">
+            <i class="entypo-play">
+              <span class="title">Start Check-in App</span>
+            </i>
+          </a>
+        </li>
+        <li>
+          <a href="/visitors.html">
+            <i class="entypo-users"></i>
+            <span class="title">Visitors</span>
+          </a>
+        </li>
+        <li>
+          <a href="/employees.html">
+            <i class="entypo-user"></i>
+            <span class="title">Employees</span>
+          </a>
+        </li>
+        <li>
+          <a href="/appointments.html">
+            <i class="entypo-calendar"></i>
+            <span class="title">Appointments</span>
+          </a>
+        </li>
+        <li>
+          <a href="/form-builder.html">
+            <i class="entypo-clipboard"></i>
+            <span class="title">Forms</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="entypo-tools"></i>
+            <span class="title">Settings</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-content">
+    <div class="row">
+      <!-- Profile Info and Notifications -->
+      <div class="col-md-6 col-sm-8 clearfix">
+        <ul class="user-info pull-left pull-none-xsm">
+          <!-- Profile Info -->
+          <li class="profile-info dropdown">
+            <!-- add class "pull-right" if you want to place this from right -->
+            <h1 class="company-name">Hello, <span id="user-name"> </span></h1>
           </li>
         </ul>
       </div>
-    </div>
-    <div class="main-content">
-      <div class="row">
-        <!-- Profile Info and Notifications -->
-        <div class="col-md-6 col-sm-8 clearfix">
-          <ul class="user-info pull-left pull-none-xsm">
-            <!-- Profile Info -->
-            <li class="profile-info dropdown">
-              <!-- add class "pull-right" if you want to place this from right -->
-              <h1 class="company-name">Hello, <span id="user-name"> </span></h1>
-            </li>
-          </ul>
-        </div>
         <!-- Raw Links -->
         <div class="col-md-6 col-sm-4 clearfix hidden-xs">
           <ul class="list-inline links-list pull-right">
@@ -145,98 +145,98 @@
                         <span class="sr-only">Close</span>
                       </button>
                       <h4 class="modal-title" id="myModalLabel">Change your Settings</h4>
+                </div>
+                <!-- Modal Body -->
+                <div class="modal-body">
+                  <form class="form-horizontal" role="form" id="settings-form">
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="employee-first">First Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="employee-first" placeholder="First Name" />
+                      </div>
                     </div>
-                    <!-- Modal Body -->
-                    <div class="modal-body">
-                      <form class="form-horizontal" role="form" id="settings-form">
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label" for="employee-first">First Name</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" id="employee-first" placeholder="First Name" />
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label" for="employee-last">Last Name</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" id="employee-last" placeholder="Last Name" />
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label" for="employee-number">Phone</label>
-                          <div class="col-sm-10">
-                            <input type="text" class="form-control" id="employee-number" placeholder="Phone Number" />
-                          </div>
-                        </div>
-                        <div class="form-group">
-                          <label class="col-sm-2 control-label" for="employee-email">Email</label>
-                          <div class="col-sm-10">
-                            <input type="email" class="form-control" id="employee-email" placeholder="Email">
-                          </div>
-                        </div>
-                      </form>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="employee-last">Last Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="employee-last" placeholder="Last Name" />
+                      </div>
                     </div>
-                    <!-- Modal Footer -->
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                      <button type="button" class="check-in-btn update-btn btn btn-default" data-dismiss="modal" onclick="window.location.reload()">Save</button>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="employee-number">Phone</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="employee-number" placeholder="Phone Number" />
+                      </div>
                     </div>
-                  </div>
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="employee-email">Email</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="employee-email" placeholder="Email">
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  <button type="button" class="check-in-btn update-btn btn btn-default" data-dismiss="modal" onclick="window.location.reload()">Save</button>
                 </div>
               </div>
-            </tbody>
-          </table>
-        </div>
+            </div>
+          </div>
+          </tbody>
+        </table>
       </div>
-      <script type="text/x-handlebars-template" id="setting-list-template">
-        <tr class="employee-row" data-toggle="modal" data-target="#myModal">
-          <td class="employee-data">{{this.first_name}}</td>
-          <td class="employee-data">{{this.last_name}}</td>
-          <td class="employee-data">{{this.phone_number}}</td>
-          <td class="employee-data">{{this.email}}</td>
-        </tr>
-      </script>
-      <div class="update-button btn btn-default" data-toggle="modal" data-target="#myModal">Update</div>
-      <br><br>
-      <h2>Payment</h2>
-      <form action="/payment/subscription" method="POST">
-        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_uSawJia2zzBWj6zvXtgMcvg8" data-name="Emissary" data-description="Subscription for 1 month of service" data-amount="2000" data-label="Subscribe"></script>
-      </form>
-      <h2>Get Check-In Notifications Via Slack</h2>
-      <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,chat:write:bot&client_id=167311421539.190332505280"><img
-                alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png"
-                srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"/></a>
+    </div>
+    <script type="text/x-handlebars-template" id="setting-list-template">
+      <tr class="employee-row" data-toggle="modal" data-target="#myModal">
+        <td class="employee-data">{{this.first_name}}</td>
+        <td class="employee-data">{{this.last_name}}</td>
+        <td class="employee-data">{{this.phone_number}}</td>
+        <td class="employee-data">{{this.email}}</td>
+      </tr>
+    </script>
+    <div class="update-button btn btn-default" data-toggle="modal" data-target="#myModal">Update</div>
+    <br><br>
+    <h2>Payment</h2>
+    <form action="/payment/subscription" method="POST">
+      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_uSawJia2zzBWj6zvXtgMcvg8" data-name="Emissary" data-description="Subscription for 1 month of service" data-amount="2000" data-label="Subscribe"></script>
+    </form>
+    <h2>Get Check-In Notifications Via Slack</h2>
+    <a href="https://slack.com/oauth/authorize?scope=incoming-webhook,chat:write:bot&client_id=167311421539.190332505280"><img
+            alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png"
+            srcset="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x"/></a>
 
-        <h2>Integrate Zapier</h2>
+    <h2>Integrate Zapier</h2>
 
-      <!-- Button trigger modal -->
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#zapierModal">Integrate Zapier!</button>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#zapierModal">Integrate Zapier!</button>
 
-      <!-- Modal -->
-      <div class="modal fade" id="zapierModal" tabindex="-1" role="dialog" aria-labelledby="zapierLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="zapierLabel">Integrate Zapier</h5>
-            </div>
-            <div class="modal-body">
-              <form role="form" id="zapier-form">
-                <div class="form-group">
-                  <label class="col-sm-2 control-label" for="zapier-url">Zapier URL</label>
-                  <div class="col-sm-10">
-                    <input type="text" name="zapier-url" placeholder="Zapier Webhook URL" class="form-control" id="zapier-url" required/>
-                  </div>
+    <!-- Modal -->
+    <div class="modal fade" id="zapierModal" tabindex="-1" role="dialog" aria-labelledby="zapierLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="zapierLabel">Integrate Zapier</h5>
+          </div>
+          <div class="modal-body">
+            <form role="form" id="zapier-form">
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="zapier-url">Zapier URL</label>
+                <div class="col-sm-10">
+                  <input type="text" name="zapier-url" placeholder="Zapier Webhook URL" class="form-control" id="zapier-url" required/>
                 </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button id="save-zapier-url" type="button" class="btn btn-primary" onclick="window.location.reload()">Save changes</button>
-            </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button id="save-zapier-url" type="button" class="btn btn-primary" onclick="window.location.reload()">Save changes</button>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 </body>
 
   <script src="assets/js/resizeable.min.js"></script>

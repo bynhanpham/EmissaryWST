@@ -1,88 +1,94 @@
 /**
  * @file Manages the dashboard
  */
-var userState = JSON.parse(localStorage.getItem("userState"));
-  if(!userState){
-    location.href= "login.html";
-}
+
+// Declare JQuery, Handlebars, and Socket globals
+/* global $ */
+/* global Handlebars */
+/* global io */
 
 $(document).ready(function(){
 
+    /*
+    let userState = JSON.parse(localStorage.getItem("userState"));
+    if(!userState){
+        location.href= "login.html";
+    }
+    */
 
-    var socket = io(); //Initialize Socket
+    let socket = io(); // Initialize Socket
 
     //Socket variables
-    var DEBUG = 1;
-    var VALIDATE_COMPANY_ID = "validate_company_id";
-    var VISITOR_LIST_UPDATE = "visitor_list_update";
-    var REMOVE_VISITOR = "remove_visitor";
+    let DEBUG = 1;
+    let VALIDATE_COMPANY_ID = "validate_company_id";
+    let VISITOR_LIST_UPDATE = "visitor_list_update";
+    let REMOVE_VISITOR = "remove_visitor";
 
-    var companyData = JSON.parse(localStorage.getItem("currentCompany"));
-    var visitorList;
+    let companyData = JSON.parse(localStorage.getItem("currentCompany"));
+    let visitorList;
     companyData.company_id = companyData._id;
 
 
-    //var curCompany = JSON.parse(localStorage.getItem('currentCompany'));
-    var curUser = JSON.parse(localStorage.getItem('currentUser'));
-    var companyName = companyData.name;
+    //let curCompany = JSON.parse(localStorage.getItem('currentCompany'));
+    let curUser = JSON.parse(localStorage.getItem('currentUser'));
+    //let companyName = companyData.name;
 
 
     $('#user-name').text(curUser.first_name + ' ' +  curUser.last_name);
 
-    //Connect to private socket
-    //var companyId = getCookie('company_id');
+    // Connect to private socket
+    //let companyId = getCookie('company_id');
     socket.emit(VALIDATE_COMPANY_ID, companyData);
 
-   /***
-    * Compile all the Handle Bar Templates
-    */
-    //DashBoard Template
-    var source = $("#visitor-list-template").html();
-    var template = Handlebars.compile(source);
+    /**
+     * Compile all the Handle Bar Templates
+     */
 
-    //Modal Template
-    var modal = $('#visitor-info-template').html();
-    var modalTemplate = Handlebars.compile(modal);
+    // DashBoard Template
+    let source = $("#visitor-list-template").html();
+    let template = Handlebars.compile(source);
 
-    //SOCKET LISTEN FOR VISITOR QUEUE
+    // Modal Template
+    let modal = $('#visitor-info-template').html();
+    let modalTemplate = Handlebars.compile(modal);
+
+    // SOCKET LISTEN FOR VISITOR QUEUE
     socket.on(VISITOR_LIST_UPDATE, function (data) {
         visitorList = data.visitors;
-        //Parse Visitor List to format Date
-        for(var i = 0, len = visitorList.length; i< len; i++){
+        // Parse Visitor List to format Date
+        for(let i = 0; i < visitorList.length; i++){
             visitorList[i].checkin_time = formatTime(visitorList[i].checkin_time);
         }
 
-        //Parse Visitors appoitments
-        for(i = 0; i < len; i++){
-          var appList = visitorList[i].appointments;
-          if(appList[0]){
-            for(var j = 0, appLen = appList.length; j < appLen; j++){
-              if(compareDate(appList[j].date)){
-                visitorList[i].appointmentTime = formatTime(appList[j].date);
-                visitorList[i]._apptId = appList[j]._id;
-                break;
-              }
+        // Parse Visitor appointments
+        for(let i = 0; i < visitorList.length; i++){
+            let appList = visitorList[i].appointments;
+            if(appList[0]){
+                for(let j = 0, appLen = appList.length; j < appLen; j++){
+                    if(compareDate(appList[j].date)){
+                        visitorList[i].appointmentTime = formatTime(appList[j].date);
+                        visitorList[i]._apptId = appList[j]._id;
+                        break;
+                    }
+                }
             }
-          }
-          else{
-      
-            visitorList[i].appointmentTime = "None";
-          }
+            else{
+                visitorList[i].appointmentTime = "None";
+            }
         }
 
-       //visitorList.checkin_time = visitorList;
-        var compiledHtml = template(visitorList);
+        let compiledHtml = template(visitorList);
         $('#visitor-list').html(compiledHtml);
     });
 
 
     /***
-    * Listener for Opening a Modal
-    */
+     * Listener for Opening a Modal
+     */
     $(document).on('click','.patient-check-out',function(){
-        var uniqueId = $(this).attr('value');
-        var visitor = findVisitor(uniqueId);
-        var compiledTemplate = modalTemplate(visitor);
+        let uniqueId = $(this).attr('value');
+        let visitor = findVisitor(uniqueId);
+        let compiledTemplate = modalTemplate(visitor);
         $('.modal-dialog').html(compiledTemplate);
     });
 
@@ -90,34 +96,31 @@ $(document).ready(function(){
      * Listener for Checking out a Visitor
      */
     $(document).on('click','.check-in-btn',function(){
-        var id = $(this).closest('.modal-content').find('.modal-body').attr('value');
-        var apptId = $(this).closest('.modal-content').find('.modal-left').attr('value');
+        let id = $(this).closest('.modal-content').find('.modal-body').attr('value');
+        let apptId = $(this).closest('.modal-content').find('.modal-left').attr('value');
 
-        var removeVisitor = findVisitor(id);
-   
-        removeVisitor.visitor_id = removeVisitor._id;
+        let visitor_id = findVisitor(id);
+
+        let removeVisitor = {};
+        removeVisitor.visitor_id = visitor_id;
 
         $.ajax({
-          dataType:'json',
-          type: 'DELETE',
-          url:'/api/appointments/' + apptId,
-          success:function(response){
-          }
+            dataType:'json',
+            type: 'DELETE',
+            url:'/api/appointments/' + apptId
         });
-        
 
         socket.emit(REMOVE_VISITOR, removeVisitor);
     });
-/*
-    $(document).on('click','.checkout-btn',function(){
-        var id = $(this).closest('.patient-check-out').attr('value');
-        var removeVisitor = findVisitor(id);
-        console.log(removeVisitor);
-        //removeVisitor.visitor_id = removeVisitor._id;
-        //socket.emit(REMOVE_VISITOR, removeVisitor);
-
-    });
-*/
+    /*
+     $(document).on('click','.checkout-btn',function(){
+     var id = $(this).closest('.patient-check-out').attr('value');
+     var removeVisitor = findVisitor(id);
+     console.log(removeVisitor);
+     //removeVisitor.visitor_id = removeVisitor._id;
+     //socket.emit(REMOVE_VISITOR, removeVisitor);
+     });
+     */
     /***
      * @function compareDate
      * @desc Compare appointment Date to today's Date
@@ -125,13 +128,13 @@ $(document).ready(function(){
      * @returns {boolean} If appointment date is equal to today's date
      */
     function compareDate(appointment){
-      var today = new Date();
-      appointment = new Date(Date.parse(appointment));
+        let today = new Date();
+        appointment = new Date(Date.parse(appointment));
 
-      var appointmentDate = appointment.getFullYear() + ' ' + appointment.getDate() + ' ' + appointment.getMonth();
-      var todayDate = today.getFullYear() + ' ' + today.getDate() + ' ' + today.getMonth();
+        let appointmentDate = appointment.getFullYear() + ' ' + appointment.getDate() + ' ' + appointment.getMonth();
+        let todayDate = today.getFullYear() + ' ' + today.getDate() + ' ' + today.getMonth();
 
-      return (appointmentDate === todayDate);
+        return (appointmentDate === todayDate);
     }
 
     /**
@@ -142,13 +145,13 @@ $(document).ready(function(){
      */
     function findVisitor(id){
 
-        for(var visitor in visitorList) {
-           if(visitorList.hasOwnProperty(visitor)){
-              if(visitorList[visitor]._id === id){
-                  if(DEBUG) console.log(visitorList[visitor]);
-                  return visitorList[visitor];
-              }
-           }
+        for(let visitor in visitorList) {
+            if(visitorList.hasOwnProperty(visitor)){
+                if(visitorList[visitor]._id === id){
+                    if(DEBUG) console.log(visitorList[visitor]);
+                    return visitorList[visitor];
+                }
+            }
         }
     }
 
@@ -157,9 +160,9 @@ $(document).ready(function(){
      * @param time
      */
     function formatTime(time){
-        var currentTime = new Date(Date.parse(time));
-        var hour = currentTime.getHours();
-        var minute = currentTime.getMinutes();
+        let currentTime = new Date(Date.parse(time));
+        let hour = currentTime.getHours();
+        let minute = currentTime.getMinutes();
 
         if(minute < 10) {
             minute = '0' + minute;
@@ -185,7 +188,7 @@ $(document).ready(function(){
     }
 
     $('#logoutButton').on('click',function(){
-      localStorage.setItem('userState',0);
+        localStorage.setItem('userState',0);
     });
 
 
@@ -193,16 +196,20 @@ $(document).ready(function(){
      * TODO order the list by increasing order
      * @param key
      */
+    /*
     function increasingOrder(key){
 
     }
+    */
 
     /***
      * TODO order the list by decreasing order
      * @param key
      */
+    /*
     function decreasingOrder(key){
 
     }
+    */
 
 });

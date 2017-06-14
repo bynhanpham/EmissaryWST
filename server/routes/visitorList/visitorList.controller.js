@@ -1,4 +1,4 @@
-//Import Resources and Libs
+// Import Resources and Libs
 let VisitorList = require('../../models/VisitorList');
 let Employee = require('../../models/Employee');
 let Appointment = require('../../models/Appointment');
@@ -6,12 +6,12 @@ let Appointment = require('../../models/Appointment');
 /* handles route for getting the Company's visitor list */
 module.exports.getCompanyVisitorListReq = function(req, res){
     let company_id = req.params.id;
-    exports.getCompanyVisitorList(company_id, function(err_msg, result){
-        if(err_msg) return res.status(400).json(err_msg);
+    module.exports.getCompanyVisitorList(company_id, function(err_msg, result){
+        if(err_msg) return res.status(404).json(err_msg);
         if(result  ===  null){
             result = new VisitorList();
             result.visitors = [];
-            result.company_id=companyId;
+            result.company_id = company_id;
             result.save(function(err){
                 if(err) {
                     return res.status(400).json(err_msg);
@@ -48,7 +48,7 @@ module.exports.getCompanyVisitorList = function(company_id, callback){
 module.exports.deleteVisitorReq = function(req, res){
     let visitor_id = req.params.visitor_id;
     let company_id = req.params.company_id;
-    exports.deleteVisitor(company_id, visitor_id, function(err_msg, result){
+    module.exports.deleteVisitor(company_id, visitor_id, function(err_msg, result){
         if(err_msg)  return res.status(400).json(err_msg);
         return res.status(200).json(result);
     });
@@ -72,7 +72,7 @@ module.exports.deleteVisitor = function(company_id, visitor_id, callback){
 /* clear the list */
 module.exports.deleteReq = function(req, res){
     let list_id = req.params.id;
-    exports.delete(list_id, function(err_msg, result){
+    module.exports.delete(list_id, function(err_msg, result){
         if(err_msg)  return res.status(400).json(err_msg);
         return res.status(200).json(result);
     });
@@ -92,7 +92,7 @@ module.exports.delete = function(list_id, callback){
 };
 // This route will be called when a visitor checks in
 module.exports.createReq = function(req, res) {
-    exports.create(req.body, function(err_msg, result){
+    module.exports.create(req.body, function(err_msg, result){
         if(err_msg)  return res.status(400).json(err_msg);
         return res.status(200).json(result);
     });

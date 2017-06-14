@@ -1,4 +1,4 @@
-/*
+/**
  * This module is meant to house all of the API
  * routes that pertain to theme settings
  */
@@ -11,6 +11,8 @@ module.exports.template = {};
 module.exports.template.use = function(req, res, next) {
     // do logging
     console.log('Intializing.....');
+    if (!req) console.log('Request is null');
+    if (!res) console.log('Response is null');
     next();
 };
 

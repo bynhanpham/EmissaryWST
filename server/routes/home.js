@@ -1,4 +1,5 @@
-/* This module is strictly meant for one route. This route
+/**
+ * This module is strictly meant for one route. This route
  * is responsible for rendering our angular app home page.
  */
 let express = require('express');
@@ -10,7 +11,8 @@ let router = express.Router();
  * Render out angular app.
  */
 router.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '../dist/visitors.html'));
+    console.log(req);
+    res.sendFile(path.join(__dirname, '../dist/visitors.html'));
 });
 
 module.exports = router;

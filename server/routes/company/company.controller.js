@@ -1,11 +1,12 @@
-/*This module is meant to house the functions
+/**
+ * This module is meant to house the functions
  * used by the authorization (auth) API. The
  * actual API is set up in index.js
-
- Functions:
- authSignup()
- authLogin()
- authResetCredentials()
+ *
+ * Functions:
+ * authSignup()
+ * authLogin()
+ * authResetCredentials()
  */
 
 let config = require('../../config/config');
@@ -22,6 +23,7 @@ module.exports.template = {};
 
 /**signup- Used to sign up a user.*/
 module.exports.template.create = function(req, res) {
+    if (!req) throw 'ERROR: no request!';
     let company = new Company();
 
     //require provided info
@@ -41,6 +43,7 @@ module.exports.template.create = function(req, res) {
 
 /**get All the companies*/
 module.exports.template.getAll = function(req, res) {
+    if (!req) throw 'ERROR: no request!';
     Company.find({},
         {
             credit_card_number:false,
@@ -51,11 +54,13 @@ module.exports.template.getAll = function(req, res) {
                 return res.status(400).json(err);
             }
             return res.status(200).json(result);
-        });
+        }
+    );
 };
 
 /**authLogin- logs in a user*/
 module.exports.template.get = function(req, res) {
+    if (!req) throw 'ERROR: no request!';
     Company.findOne({_id: req.params.id}, function(err, company) {
         if(err)
             return res.status(400).json({error: "Could Not Save"});
@@ -65,6 +70,7 @@ module.exports.template.get = function(req, res) {
 
 /* update the company info */
 module.exports.template.update = function(req, res){
+    if (!req) throw 'ERROR: no request!';
     Company.findOne({_id: req.params.id}, function (err, c) {
         if(err || !c)
             return res.status(401).json({error: "Could Not Find"});
@@ -95,6 +101,7 @@ module.exports.template.update = function(req, res){
 
 /* delete company */
 module.exports.template.delete = function(req, res){
+    if (!req) throw 'ERROR: no request!';
     Company.findById(req.params.id, function(err, c) {
         if(err)
             res.status(400).json({error: "Could Not Find"});
@@ -110,6 +117,7 @@ module.exports.template.delete = function(req, res){
 
 /**authResetCredentials- resets a user's credentials*/
 module.exports.template.resetCredentials = function(req, res) {
+    if (!req) throw 'ERROR: no request!';
     Company.findOne({email: req.params.user}, function (err, c) {
         if(err || !c)
             return res.status(400).json({error: "Could Not Find"});

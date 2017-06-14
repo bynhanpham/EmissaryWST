@@ -1,4 +1,6 @@
+// Declare Google API and JQuery globals
 /* global gapi */
+/* global $ */
 
 // Replace with your client ID from the developer console.
 console.log("googlestuff");

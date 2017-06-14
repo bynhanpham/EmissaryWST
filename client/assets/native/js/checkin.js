@@ -2,19 +2,23 @@
  * @file Manages checkins.
  */
 
+// Declare JQuery and Socket globals
+/* global $ */
+/* global io */
+
 $(document).ready(function () {
 
-    var socket = io();
+    let socket = io();
 
-    var VALIDATE_COMPANY_ID = "validate_company_id";
-    var ADD_VISITOR = "add_visitor";
+    let VALIDATE_COMPANY_ID = "validate_company_id";
+    let ADD_VISITOR = "add_visitor";
 
-    var companyData = JSON.parse(localStorage.getItem("currentCompany"));
+    let companyData = JSON.parse(localStorage.getItem("currentCompany"));
     const myCompanyId = companyData._id;
     socket.emit(VALIDATE_COMPANY_ID, companyData);
 
-    var formData = loadSavedForm(myCompanyId);
-    var requiredFields = [{
+    let formData = loadSavedForm(myCompanyId);
+    let requiredFields = [{
         "type": "header",
         "subtype": "h1",
         "label": "Check In"
@@ -45,7 +49,7 @@ $(document).ready(function () {
         "name": "phone_number"
     }];
 
-    var submitButton = [{
+    let submitButton = [{
         "type": "button",
         "subtype": "submit",
         "label": "Submit",
@@ -181,9 +185,9 @@ $(document).ready(function () {
      * @desc gives the current time
      */
     function updateClock() {
-        var currentTime = new Date();
-        var currentHours = currentTime.getHours();
-        var currentMinutes = currentTime.getMinutes();
+        let currentTime = new Date();
+        let currentHours = currentTime.getHours();
+        let currentMinutes = currentTime.getMinutes();
 
         // Pad the minutes and seconds with leading zeros, if required
         currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
@@ -195,7 +199,7 @@ $(document).ready(function () {
         currentHours = ( currentHours === 0 ) ? 12 : currentHours;
 
         // Compose the string for display
-        var currentTimeString = currentHours + ":" + currentMinutes;
+        let currentTimeString = currentHours + ":" + currentMinutes;
 
         $("#clock").html(currentTimeString);
     }
@@ -206,8 +210,8 @@ $(document).ready(function () {
 });
 
 function loadSavedForm(myCompanyId) {
-    var url = '/api/form/template/' + myCompanyId;
-    var formJSON = getFormData(url);
+    let url = '/api/form/template/' + myCompanyId;
+    let formJSON = getFormData(url);
 
     if (formJSON === null) {
         return null;
@@ -217,8 +221,7 @@ function loadSavedForm(myCompanyId) {
 }
 
 function getFormData(url) {
-    var json;
-
+    let json = {};
     $.ajax({
         dataType: 'json',
         type: 'GET',
@@ -229,6 +232,5 @@ function getFormData(url) {
             json = response;
         }
     });
-
     return json;
 }

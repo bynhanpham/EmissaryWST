@@ -1,38 +1,39 @@
 /**
- * Created by DanielKong on 3/8/16.
+ * @file Provides Signup functionality.
  */
+
+// Declare JQuery global
+/* global $ */
+
 $(document).ready(function(){
 
-    var companyId;
-    var buttonClicked;
+    let companyId;
+    let buttonClicked;
 
-    //Listener for Initial Sign up of an Employee
+    // Listener for Initial Sign up of an Employee
     $('#submit-btn').on('click', function(){
         buttonClicked = 'employee';
     });
 
-    //Listener for creating a company
+    // Listener for creating a company
     $('#submit-company-btn').on('click',function(){
         buttonClicked = 'company';
     });
 
-    $('#company-reg-form').on('submit', function(event) {
-        var companyData = grabCompanyData();
-        console.log(companyData);
+    $('#company-reg-form').on('submit', function() {
+        let companyData = grabCompanyData();
         ajaxPost('/api/companies',companyData);
-        transitionToNextStep();
         return false;
     });
 
-    $('#employee-reg-form').on('submit', function(event) {
-        var employeeData = grabEmployeeData();
-        console.log(employeeData);
+    $('#employee-reg-form').on('submit', function() {
+        let employeeData = grabEmployeeData();
         ajaxPost('/api/employees',employeeData);
         return false;
     });
 
     $('#form-password, #form-repeat-password').on('keyup', function () {
-        var repeatpassword = $('#form-repeat-password')[0];
+        let repeatpassword = $('#form-repeat-password')[0];
         if ($('#form-password').val() !== $('#form-repeat-password').val()) {
             repeatpassword.setCustomValidity('Passwords do not match!');
         } else {
@@ -46,7 +47,7 @@ $(document).ready(function(){
      * @return {company} company
      */
     function grabCompanyData(){
-        var company = {};
+        let company = {};
         company.name = $('#form-company-name').val();
         company.email = $('#form-email').val();
         company.phone_number = $('#form-phone').val();
@@ -59,7 +60,7 @@ $(document).ready(function(){
      * @return {employee} employee
      */
     function grabEmployeeData(){
-        var employee = {};
+        let employee = {};
         employee.first_name = $('#form-employee-first').val();
         employee.last_name = $('#form-employee-last').val();
         employee.email = $('#form-employee-email').val();
@@ -83,7 +84,6 @@ $(document).ready(function(){
             data: data,
             dataType: 'json',
             success: function(response){
-                //console.log(response);
                 if(url === '/api/employees') {
                     localStorage.setItem('userState', 1);
                     localStorage.setItem('currentUser', JSON.stringify(response));
@@ -92,33 +92,30 @@ $(document).ready(function(){
                 else if (url === '/api/companies') {
                     localStorage.setItem('currentCompany', JSON.stringify(response));
                     companyId = response._id;
+                    transitionToNextStep();
                 }
             },
-            error: function(response){
+            error: function(){
                 event.preventDefault();
-                
                 if(url === '/api/employees') {
                     alert("Email Already Associated With Another Account\n Please Use Another Email");
                 }
                 else if (url === '/api/companies') {
                     alert("Email Already Associated With Another Company\n Please Use Another Email");
                 }
-                location.href = '/signup.html';
+                // This will prevent the page from refreshing
+                return false;
             }
         });
     }
 
     /**
      * @function transitionToNextStep
-     * @desc Bring up the employees form after the company form is filled?
+     * @desc Brings up the employees form after the company form is filled
      */
     function transitionToNextStep () {
-        var next_step = true;
-
-        if( next_step ) {
-            $('#company-reg-form').fadeOut(400, function() {
-                $('#employee-reg-form').find('fieldset:first-child').fadeIn();
-            });
-        }
+        $('#company-reg-form').fadeOut(400, function() {
+            $('#employee-reg-form').find('fieldset:first-child').fadeIn();
+        });
     }
 });

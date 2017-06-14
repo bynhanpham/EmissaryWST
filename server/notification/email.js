@@ -1,3 +1,10 @@
+/**
+ * @file Send email notifications
+ */
+// Not sure where these globals come from...
+/* global done */
+/* global len */
+
 let express = require('express');
 let nodemailer = require("nodemailer");
 

@@ -1,5 +1,5 @@
 let  nodemon = require('gulp-nodemon'),
-     shell = require('gulp-shell');
+    shell = require('gulp-shell');
 
 let gulp = require('gulp');
 
@@ -9,20 +9,20 @@ let gulp = require('gulp');
  * Note: do not start directories with ./ in watch and ignore
  */
 gulp.task('serve:backend', function() {
-  return nodemon({
-    script: 'server/app.js',
-    watch: ['server/**/*.js'],
-    ignore: ['server/test/**/*.js']
-  })
-  .on('restart', function() {
-    console.log('Server restarting. Please wait.');
-  });
+    return nodemon({
+        script: 'server/app.js',
+        watch: ['server/**/*.js'],
+        ignore: ['server/test/**/*.js']
+    })
+        .on('restart', function() {
+            console.log('Server restarting. Please wait.');
+        });
 });
 
 /* Use foreman to serve the server, allowing gulp-nodemon
  * to automatically access the .env file.
  */
 gulp.task('backend', function() {
-  return gulp.src('')
-    .pipe(shell('nf run gulp serve:backend'));
+    return gulp.src('')
+        .pipe(shell('nf run gulp serve:backend'));
 });

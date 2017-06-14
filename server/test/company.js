@@ -48,6 +48,7 @@ describe('Company Test', function() {
                 })
             .expect(400)
             .end(function(err,res){
+                if (err) console.log(err);
                 res.should.have.property('error');
                 done();
             });
@@ -58,6 +59,7 @@ describe('Company Test', function() {
             .get('/api/companies/'+currCompany._id)
             .expect(200)
             .end(function(err,res){
+                if (err) console.log(err);
                 res.body.should.have.property('_id');
                 done();
             });
@@ -68,6 +70,7 @@ describe('Company Test', function() {
             .get('/api/companies/'+0)
             .expect(400)
             .end(function(err,res){
+                if (err) console.log(err);
                 console.log(res.body);
                 res.body.should.have.property('error');
                 done();
@@ -80,6 +83,7 @@ describe('Company Test', function() {
             .get('/api/companies')
             .expect(200)
             .end(function(err,res){
+                if (err) console.log(err);
                 res.body.should.be.an.instanceof(Array);
                 res.body.should.have.length.of.at.least(1);
                 done();
@@ -115,8 +119,9 @@ describe('Company Test', function() {
             .delete('/api/companies/'+currCompany._id)
             .expect(200)
             .end(function(err,res){
+                if (err) console.log(err);
                 res.body.should.have.property('_id');
-                Company.find({_id:currCompany._id}, function(err, _){
+                Company.find({_id:currCompany._id}, function(err){
                     // TODO - Fix, should exist
                     should.not.exist(err);
                     done();

@@ -1,7 +1,12 @@
+// Declare JQuery and Handlebars globals
+/* global $ */
+/* global Handlebars */
+
 $(document).ready(function(){
    console.log('ready');
+
    function getCompanies() {
-        var json;
+        let json = {};
         $.ajax({
             dataType: 'json',
             type: 'GET',
@@ -15,13 +20,14 @@ $(document).ready(function(){
         });
         return json;
     }
-    var companies = getCompanies();
+
+    let companies = getCompanies();
+
     //DashBoard Template
-    var source = $("#company-list-template").html();
-    var template = Handlebars.compile(source);
+    let source = $("#company-list-template").html();
+    let template = Handlebars.compile(source);
 
-
-    var compiledHtml = template(companies);
+    let compiledHtml = template(companies);
     
     $('#company-list').html(compiledHtml);
 });

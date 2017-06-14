@@ -1,3 +1,6 @@
+// Declare Node.js Process global
+/* global process */
+
 // SauceLabs + Selenium + Mocha front end testing helpers
 let seTest = require('selenium-webdriver/testing'),
     webdriver = require('selenium-webdriver'),
@@ -8,6 +11,8 @@ let username,
     saucelabs,
     buildTag,
     tunnelId;
+
+var driver;
 
 function setSauceEnv(){
     username = process.env.SAUCE_USERNAME;
@@ -79,4 +84,4 @@ function makeSuite(desc, cb) {
     });
 }
 
-exports.makeSuite = makeSuite;
+module.exports.makeSuite = makeSuite;

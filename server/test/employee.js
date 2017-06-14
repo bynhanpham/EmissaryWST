@@ -4,6 +4,8 @@ let should = require('chai').should();
 // Wrapper that creates admin user to allow api calls
 let ConfigureAuth = require('./ConfigureAuth');
 
+// This should be refactored
+var returnedId;
 
 describe("Employee", function() {
         let url = "localhost:" + config.port;
@@ -119,7 +121,7 @@ describe("Employee", function() {
             });
 
             // TEST PUT
-            describe('PUT /api/employee/:id', function(){
+            describe('PUT /api/employees/:id', function(){
                 it('Should update the employee data', function(done){
                     request(url)
                         .put('/api/employees/' + returnedId)
@@ -151,6 +153,7 @@ describe("Employee", function() {
                             _admin_id: credentials.admin._id
                         })
                         .end(function(err, res){
+                            if (err) console.log(err);
                             res.body.should.be.instanceof(Object);
                             should.exist(res.body);
                             res.body.should.have.length.of(1);
@@ -168,6 +171,7 @@ describe("Employee", function() {
                         .get('/api/employees/' + returnedId)
                         .query({email: credentials.email, token: credentials.token})
                         .end(function(err, res){
+                            if (err) console.log(err);
 
                             res.body.should.have.property('_id');
                             res.body.should.have.property('email');
@@ -190,6 +194,7 @@ describe("Employee", function() {
                         .delete('/api/employees/' + returnedId)
                         .query({email: credentials.email, token: credentials.token})
                         .end(function(err, res){
+                            if (err) console.log(err);
                             res.body.should.have.property('_id');
                             res.body.should.not.have.property('password');
                             done();

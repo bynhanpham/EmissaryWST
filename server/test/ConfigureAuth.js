@@ -1,9 +1,7 @@
-var request = require('supertest');
-
-var config = require('../config/config');
-
-var AdminUser = require('../models/Company');
-var Employee = require('../models/Employee');
+let request = require('supertest');
+let config = require('../config/config');
+let AdminUser = require('../models/Company');
+let Employee = require('../models/Employee');
 
 // Employee login feature
 function setupEmployee(done) {
@@ -15,22 +13,20 @@ function setupAdmin(done) {
 }
 
 function setupUser(done, isEmployee) {
-    var path = isEmployee ? '/employees' : '/api/companies';
-    var UserModel = isEmployee ? Employee : AdminUser;
-
-    var token;
-    var admin;
+    let path = isEmployee ? '/api/employees' : '/api/companies';
+    let token;
+    let admin;
 
     // Add random number to email to reduce concurrency issue chances on
     // duplicate unique key errors.
-    var email = "test" + Math.floor(Math.random() * 100000) + "@test.com";
-    var password = "test_password";
-    var credit_card_number="1231231241251";
-    var name = "test";
-    var expiration_date="6/17";
-    var phone_number="1234567890";
+    let email = "test" + Math.floor(Math.random() * 100000) + "@test.com";
+    let password = "test_password";
+    let credit_card_number="1231231241251";
+    let name = "test";
+    let expiration_date="6/17";
+    let phone_number="1234567890";
 
-    var url = "localhost:" + config.port;
+    let url = "localhost:" + config.port;
     request(url)
         .post(path)
         .send({
@@ -51,9 +47,10 @@ function setupUser(done, isEmployee) {
 
     function login(id) {
         request(url)
-            .get(path+'/'+id)
+            .get(path + '/' + id)
             .expect(200)
             .end(function(err,res){
+                if(!res) console.log('No response!');
                 if(err)
                     throw(err);
                 retrieveAdmin();

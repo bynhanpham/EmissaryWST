@@ -95,7 +95,7 @@ module.exports.template.update = function (req, res) {
 
         updateFields(req, a);
 
-        //TODO check if the date is taken already
+        // TODO: check if the date is taken already
         a.save(function (err) {
             if (err) {
                 return res.status(400).json({error: "Could Not Save"});
